@@ -8,21 +8,26 @@ class TreeNode
         this.data = data;
     }
 }
-public class diameter {
-    int maxi = 0;
-    public int diameterBinaryTree(TreeNode root) {
-        height(root);
-        return maxi;
+public class PathSum1 {
+    public boolean pathSum(TreeNode root,int targetSum, int sum)
+    {
+        if(root == null) return false;
+        sum = sum + root.data;
+        if(root.left == null && root.right == null)
+        {
+            if(sum == targetSum) return true;
+            return false;
+        }
+        boolean leftSide = pathSum(root.left, targetSum, sum);
+        boolean rightSide = pathSum(root.right, targetSum, sum);
+        return leftSide || rightSide;
     }
-    public int height(TreeNode root) {
-        if (root == null) return 0;
-        int lh = height(root.left);
-        int rh = height(root.right);
-        maxi = Math.max(maxi, lh + rh);
-        return 1 + Math.max(lh, rh);
+    public boolean hasPathSum(TreeNode root, int targetSum) {
+        int sum =0;
+        return pathSum(root,targetSum,sum);
     }
     public static void main(String[] args) {
-        diameter d = new diameter();
+        PathSum1 p1 = new PathSum1();
         TreeNode root = new TreeNode(1);
         root.left = new TreeNode(2);
         root.right = new TreeNode(3);
@@ -38,8 +43,6 @@ public class diameter {
         root.right.left.right = new TreeNode(13);
         root.right.right.left = new TreeNode(14);
         root.right.right.right = new TreeNode(15);
-        
-        int result = d.diameterBinaryTree(root);
-        System.out.println("Diameter of the binary tree: " + result);
+        System.out.println(p1.hasPathSum(root, 22));
     }
 }
