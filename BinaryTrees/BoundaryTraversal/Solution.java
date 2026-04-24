@@ -12,7 +12,6 @@ class TreeNode{
 }
 
 public class Solution {
-
     public ArrayList<Integer> boundaryTraversal(TreeNode root)
     {
         ArrayList<Integer> res = new ArrayList<>();
@@ -39,7 +38,6 @@ public class Solution {
 
         while(curr != null)
         {
-            // ✅ FIX: use curr instead of root
             if(!isLeaf(curr))
             {
                 res.add(curr.data);
