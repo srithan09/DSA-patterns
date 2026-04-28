@@ -30,7 +30,7 @@ public class Solution {
         {
             return true;
         }
-        if(func(root.left, ans, x) == true || func(root.right, ans, x)) return true;
+        if(func(root.left, ans, x) == true || func(root.right, ans, x)== true) return true;
         ans.remove(ans.size()-1);
         return false;
     }
