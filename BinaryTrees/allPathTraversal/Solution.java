@@ -19,7 +19,7 @@ public class Solution {
         
     }
     public void func(TreeNode root, ArrayList<Integer> list)
-{
+    {
     if(root == null) return;
 
     list.add(root.data);  
